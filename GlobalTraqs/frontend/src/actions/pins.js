@@ -26,9 +26,16 @@ import {
 import ActionButton from "antd/lib/modal/ActionButton";
 
 //GET PINS
+
+const config = {
+  headers: {
+    "X-Arqive-Api-Key": process.env.REACT_APP_API_KEY,
+  },
+};
+
 export const getPins = () => (dispatch) => {
   axios
-    .get("/api/pins/")
+    .get("/api/pins/", config)
     .then((res) => {
       dispatch({
         type: GET_PINS,
