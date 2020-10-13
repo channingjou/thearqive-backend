@@ -120,7 +120,7 @@ developmental version: http://globaltraqsdev.com/
     
 3. Create Python virtual environment
     
-    cd GlobalTraqs
+    cd GlobalTraQs
     
     pip install pipenv
     
@@ -130,7 +130,7 @@ developmental version: http://globaltraqsdev.com/
     
 4. Install django and dependencies
 
-    Global
+    /GlobaltraQs/
 
     pipenv shell (if not activated from last step)
     
@@ -169,6 +169,8 @@ developmental version: http://globaltraqsdev.com/
     (again these values will change for deployments)
     
 6. Migrate, Create a superuser, and Start backend
+
+    /GlobaltraQs/Globaltraqs/
 
     python manage.py makemigrations
     
@@ -220,7 +222,7 @@ developmental version: http://globaltraqsdev.com/
     
     exit
     
-10. Populate DB with pre-made stories (this is a potential fix for FE crashing, also possibly need to populate other tables in DB)
+10. Populate DB with pre-made stories (this is a potential fix for FE crashing, also possibly need to populate other tables in DB like users.user)
 
     GlobaltraQs/GlobalTraqs
     
