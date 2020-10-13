@@ -147,7 +147,7 @@ developmental version: http://globaltraqsdev.com/
     
     DEBUG=True
     
-    SECRET_KEY=
+    SECRET_KEY=''
     
     NAME: devdb
     
