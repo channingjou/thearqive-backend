@@ -1,14 +1,14 @@
-1. [About](https://github.com/jwest115/GlobaltraQs/blob/master/README.md#about)
-1. [Rules](https://github.com/jwest115/GlobaltraQs/blob/master/README.md#rules)
-1. [Instructions](https://github.com/jwest115/GlobaltraQs/blob/master/README.md#globaltraqs) 
-1. [Running](https://github.com/jwest115/GlobaltraQs/blob/master/README.md#running)
-1. [Screenshots](https://github.com/jwest115/GlobaltraQs/blob/master/README.md#screenshots)
+1. [About](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#about)
+1. [Rules](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#rules)
+1. [Instructions](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#globaltraqs) 
+1. [Running](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#running)
+1. [Screenshots](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#screenshots)
 
 
 
 # About
 
-Senior Design Project of redesigning of the website : [GlobalTraQs](http://globaltraqs.com/)
+Senior Design Project of redesigning of the website : [The ArQive](http://thearqive.com/)
 Still In Development
 
 # Rules 
@@ -61,10 +61,184 @@ Please make the merge/pull request with as much detail about what you've done/ad
 
 Or lead will merge your branch to master for you. Just ask!
 
-
 # GlobaltraQs
 
 developmental version: http://globaltraqsdev.com/
+
+# Setup guide
+
+0. Download repos
+    git clone https://github.com/balacarter/GlobaltraQs.git
+    
+    git clone https://github.com/balacarter/arQive-frontend.git
+
+1. Install python3.7 and pip 3
+
+    cd ~
+
+    sudo apt update
+    
+    sudo apt install software-properties-common
+    
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    
+    sudo apt install python3.7
+
+    Use python3.7 -V to verify python 3.7.x has been installed
+    
+    sudo apt install -y python3-pip
+    
+    Use pip3 -V to verify pip has been installed
+    
+2. Install and setup Postgresql
+
+    sudo apt install build-essential libssl-dev libffi-dev python-dev libpq-dev postgresql postgresql-contrib
+    
+    sudo service postgresql start
+    
+    sudo -i -u postgres
+    
+    psql
+    
+    CREATE DATABASE devdb;
+    
+    CREATE USER admin WITH PASSWORD 'adminpassword';
+    
+    ALTER ROLE admin SET client_encoding TO 'utf8';
+    
+    ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
+    
+    ALTER ROLE admin SET timezone TO 'UTC';
+    
+    GRANT ALL PRIVILEGES ON DATABASE devdb TO admin;
+    
+    (you can make you own db name, username, and password, these will change in production builds for security, be sure to remember your info for creating superusers)
+    
+    \q
+    
+    exit
+    
+3. Create Python virtual environment
+    
+    cd GlobalTraqs
+    
+    pip install pipenv
+    
+    pipenv install
+    
+    pipenv shell
+    
+4. Install django and dependencies
+
+    Global
+
+    pipenv shell (if not activated from last step)
+    
+    pip3 install -r requirements.txt
+    
+5. Update settings.ini
+
+    nano GlobaltraQs/GlobalTraqs/settings.ini
+    
+    Can copy and paste from below or fill in your own.
+    
+    [settings]
+    
+    DEBUG=True
+    
+    SECRET_KEY=
+    
+    NAME: devdb
+    
+    USER: admin
+    
+    PASSWORD: adminpassword
+    
+    HOST: localhost
+    
+    PORT: 5432
+    
+    EMAIL_USE_TLS=True 
+    
+    EMAIL_PORT= 587
+    
+    EMAIL_HOST_USER = 'resetglobaltraqs@gmail.com'
+    
+    EMAIL_HOST_PASSWORD = 'nmjpfuuvopvbmeri'
+
+    (again these values will change for deployments)
+    
+6. Migrate, Create a superuser, and Start backend
+
+    python manage.py makemigrations
+    
+    python manage.py migrate
+
+    python manage.py createsuperuser (follow prompts and be sure to use the values for the DB user u made in step 2)
+
+    python manage.py runserver
+    
+7. Generate API key for frontend
+    
+    With the DJANGO server running from the previous step, navigate to http://127.0.0.1:8000/admin and log in with the superuser account you made
+    
+    Generate a new API key (any expiration date)
+    
+    Copy the key (including the prefix) from the yellow pop up at the top of the page
+    
+    Add the key to frontend .env file (check discord for .env file info)
+    
+8. Create user groups - This section is a WIP
+
+    With the DJANGO server running from the previous step, navigate to http://127.0.0.1:8000/admin and log in with the superuser account you made
+    
+    Go to Authentication and Authorization
+    
+    Create new groups for Administrators, Moderators, and Anonymous with aproriate permissions assigned
+    
+    Work in Progress: No definite answers for which exact permissions to add, I assume admins get all permissions and anonymous gets none
+    
+9. Add categories for pins in DB
+
+    Exit virtual environment or open a new terminal
+    
+    cd ~
+    
+    sudo -i -u postgres
+    
+    psql
+    
+    \c devdb
+    
+    INSERT INTO pins_categorytype VALUES (1, Personal, '');
+    
+    INSERT INTO pins_categorytype VALUES (2, Historical, '');
+    
+    INSERT INTO pins_categorytype VALUES (3, Community, '');
+    
+    \q
+    
+    exit
+    
+10. Populate DB with pre-made stories (this is a potential fix for FE crashing, also possibly need to populate other tables in DB)
+
+    GlobaltraQs/GlobalTraqs
+    
+    python3 manage.py shell
+    
+    exec(open('old_story_upload.py').read())
+    
+11. Start Frontend
+
+    In a new terminal open the arQive-frontend dir
+    
+    npm install
+    
+    npm start
+    
+    
+    
+# old instructions
 
 # settings.ini
 
