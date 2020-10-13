@@ -16,6 +16,10 @@ Contribution Rules
 
 ✔️ Never work on master branch!
 
+⚠️ Be sure to branch off the development branch for features WIP
+
+⚠️ Branch off of the production branch for hot fixes
+
 
 ✔️ Create a new branch for each set of related bugs or set of related tasks, naming by:
 
