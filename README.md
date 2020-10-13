@@ -68,6 +68,7 @@ developmental version: http://globaltraqsdev.com/
 # Setup guide
 
 0. Download repos
+
     git clone https://github.com/balacarter/GlobaltraQs.git
     
     git clone https://github.com/balacarter/arQive-frontend.git
