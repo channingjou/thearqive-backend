@@ -139,7 +139,7 @@ developmental version: http://globaltraqsdev.com/
 
     pipenv shell (if not activated from last step)
     
-    pip3 install -r requirements.txt
+    pip3 install -r requirements.txt (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper installtion       for production, unless production has it installed on server already.)
     
 5. Update settings.ini
 
