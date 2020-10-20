@@ -127,7 +127,7 @@ developmental version: http://globaltraqsdev.com/
     
     cd GlobalTraQs
     
-    sudo pip3 install pipenv
+    sudo -H pip3 install -U pipenv
     
     pipenv install
     
