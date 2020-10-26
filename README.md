@@ -71,8 +71,12 @@ developmental version: http://globaltraqsdev.com/
 
 # Setup guide
 
-0. Download repos
+0. Update and Download repos
 
+    sudo apt-get update
+    
+    sudo apt -y upgrade
+    
     git clone https://github.com/balacarter/GlobaltraQs.git
     
     git clone https://github.com/balacarter/arQive-frontend.git
@@ -139,7 +143,9 @@ developmental version: http://globaltraqsdev.com/
 
     pipenv shell (if not activated from last step)
     
-    pip3 install -r requirements.txt (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper installtion       for production, unless production has it installed on server already.)
+    pip3 install -r requirements.txt (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper installation       for production, unless production has it installed on server already.)
+    
+    pip3 install psycopg2-binary python-decouple djangorestframework knox jinja2 djangorestframework-api-key django-rest-knox django-restql django-decouple
     
 5. Update settings.ini
 
@@ -193,7 +199,7 @@ developmental version: http://globaltraqsdev.com/
     
     Copy the key (including the prefix) from the yellow pop up at the top of the page
     
-    Add the key to frontend .env file (check discord for .env file info)
+    Add the key to frontend .env file (ssh into arqive server and retrieve the correct env from /carterb/)
     
 8. Create user groups - This section is a WIP
 
