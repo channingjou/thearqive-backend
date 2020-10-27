@@ -223,11 +223,11 @@ developmental version: http://globaltraqsdev.com/
     
     \c devdb
     
-    INSERT INTO pins_categorytype VALUES (1, Personal, '');
+    INSERT INTO pins_categorytype VALUES (1, 'Personal', '');
     
-    INSERT INTO pins_categorytype VALUES (2, Historical, '');
+    INSERT INTO pins_categorytype VALUES (2, 'Historical', '');
     
-    INSERT INTO pins_categorytype VALUES (3, Community, '');
+    INSERT INTO pins_categorytype VALUES (3, 'Community', '');
     
     \q
     
