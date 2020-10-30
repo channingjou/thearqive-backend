@@ -133,7 +133,7 @@ developmental version: http://globaltraqsdev.com/
     
     sudo -H pip3 install -U pipenv
     
-    pipenv install
+    sudo pipenv install
     
     pipenv shell
     
