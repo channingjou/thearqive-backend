@@ -129,7 +129,7 @@ developmental version: http://globaltraqsdev.com/
     
 3. Create Python virtual environment
     
-    cd GlobalTraQs
+    cd GlobaltraQs
     
     sudo -H pip3 install -U pipenv
     
