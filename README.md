@@ -145,7 +145,7 @@ developmental version: http://globaltraqsdev.com/
     
     pip3 install -r requirements.txt (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper installation       for production, unless production has it installed on server already.)
     
-    pip3 install psycopg2-binary python-decouple djangorestframework knox jinja2 boto3 djangorestframework-api-key django-rest-knox django-restql django-decouple
+    pip3 install psycopg2-binary python-decouple djangorestframework knox jinja2 boto3 djangorestframework-api-key django-rest-knox django-restql django-decouple Pillow
     
 5. Update settings.ini
 
