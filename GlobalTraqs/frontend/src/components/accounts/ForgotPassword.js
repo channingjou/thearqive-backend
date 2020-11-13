@@ -19,7 +19,7 @@ export default function ForgotPassword() {
         })
         .then(response => {
           if (response.data.toString().includes("object")) {
-            console.log(response.headers);
+            //console.log(response.headers);
             window.alert(
               "An e-mail has been sent with a link to change your password"
             );

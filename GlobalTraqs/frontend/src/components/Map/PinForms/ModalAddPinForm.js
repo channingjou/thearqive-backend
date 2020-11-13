@@ -57,9 +57,9 @@ function ModalAddPinForm(props) {
 
     if (props.addPinValues.title && props.addPinValues.description) {
       console.log("Results");
-      console.log(results);
+      //console.log(results);
       if (results.length > 0) {
-        console.log("settings values");
+        //console.log("settings values");
         props.addPinValues.latitude = Number(results[0].y);
         props.addPinValues.longitude = Number(results[0].x);
       }

@@ -301,7 +301,7 @@ export const userFirstUpvote = (pin, user) => (dispatch) => {
     pinId: pin,
     upVoter: user,
   };
-  console.log("pinid: " + pin + " user:" + user);
+  //console.log("pinid: " + pin + " user:" + user);
   axios
     .post(`api/upVoteStory/`, submit)
     .then((res) => {

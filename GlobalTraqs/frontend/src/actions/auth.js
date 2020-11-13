@@ -92,7 +92,7 @@ export const register = ({ username, password, email }) => (dispatch) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
-      console.log(res.data);
+      //console.log(res.data);
     })
     .catch((err) => {
       //dispatch(returnErrors(err.data, err.status));
@@ -173,7 +173,7 @@ export const delFlagComment = (id) => (dispatch) => {
   axios
     .delete(`/api/flagcomment/${id}/`)
     .then((res) => {
-      console.log(res.data);
+      //console.log(res.data);
       dispatch({
         type: REMOVE_FLAG_COMMENT,
         payload: id,
@@ -189,7 +189,7 @@ export const updateProfilePic = (url) => (dispatch, getState) => {
   axios
     .patch("/api/auth/user", profilepic, tokenConfig(getState))
     .then((res) => {
-      console.log(res.data);
+      //console.log(res.data);
       dispatch({
         type: UPDATE_PROFILE_PIC,
         payload: res.data,
