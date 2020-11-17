@@ -171,7 +171,7 @@ developmental version: http://globaltraqsdev.com/
     
     Start virtual environment in GlobaltraQs repo
     
-    `pipenv shell`
+    `sudo pipenv shell`
     
 4. Install django and dependencies
 
