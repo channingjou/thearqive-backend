@@ -179,7 +179,7 @@ developmental version: http://globaltraqsdev.com/
     
     Make sure the virtual environment is activated 
 
-    `pipenv shell`
+    `sudo pipenv shell`
     
     Install project requirements
     
