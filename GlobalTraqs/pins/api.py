@@ -157,6 +157,7 @@ class upVoteStoryViewSet(viewsets.ModelViewSet):
 
 class FlagStoryViewSet(viewsets.ModelViewSet):
     queryset = flagStory.objects.all()
+    print(queryset)
     # permission_classes = [
     #     permissions.AllowAny
     #     # permissions.IsAuthenticated,
