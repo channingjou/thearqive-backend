@@ -62,7 +62,6 @@ class CommentStorySerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class PinSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
   #  updoot = serializers.IntegerField()
 
-    print("TEST")
     username = serializers.CharField(
         source="owner.username", read_only=True)
     categoryName = serializers.CharField(
@@ -80,7 +79,6 @@ class PinSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
     commentstory = CommentStorySerializer(many=True, read_only=True)
 
     class Meta:
-        print("TEST IN META")
         model = pin
         fields = '__all__'
 
