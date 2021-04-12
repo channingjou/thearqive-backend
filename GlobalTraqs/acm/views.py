@@ -13,11 +13,10 @@ from django_filters.fields import Lookup
 from rest_framework import viewsets, permissions
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import viewsets, permissions
-from rest_framework.pagination import PageNumberPagination
-from rest_framework.generics import RetrieveAPIView
+
 
 from pins.models import pin
+import subprocess
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,4 +28,5 @@ class RunAcmView(APIView):
         """Implementation like this means future efforts only need to change what script this API calls"""
         """I dont think this api has to return anything major, maybe just a boolean which triggers the"""
         """frontend to recall all the pins again to reflect the new flags"""
+        output = subprocess.check_output(['python', 'acm/run_acm.py'])
         return Response({'completed' : True})
