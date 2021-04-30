@@ -71,79 +71,127 @@ developmental version: http://globaltraqsdev.com/
 
 # Setup guide
 
-0. Download repos
-
-    git clone https://github.com/balacarter/GlobaltraQs.git
+0. Update and Download repos
     
-    git clone https://github.com/balacarter/arQive-frontend.git
+    `sudo apt-get update`
+    
+    `sudo apt -y upgrade`
+    
+    `git clone https://github.com/balacarter/GlobaltraQs.git`
+    
+    `git clone https://github.com/balacarter/arQive-frontend.git`
 
 1. Install python3.7 and pip 3
 
-    cd ~
+    Navigate to home dir
 
-    sudo apt update
-    
-    sudo apt install software-properties-common
-    
-    sudo add-apt-repository ppa:deadsnakes/ppa
-    
-    sudo apt install python3.7
+    `cd ~`
 
-    Use python3.7 -V to verify python 3.7.x has been installed
+    Get latest from server
+
+    `sudo apt update`
     
-    sudo apt install -y python3-pip
+    Add third party repo for python 3.7
     
-    Use pip3 -V to verify pip has been installed
+    `sudo apt install software-properties-common`
+    
+    `sudo add-apt-repository ppa:deadsnakes/ppa`
+    
+    Install python3 from repo
+    
+    `sudo apt install python3.7`
+
+    Use `python3.7 -V` to verify python 3.7.x has been installed
+    
+    Install pip3
+    
+    `sudo apt install -y python3-pip`
+    
+    Use `pip3 -V` to verify pip has been installed
     
 2. Install and setup Postgresql
 
-    sudo apt install build-essential libssl-dev libffi-dev python-dev libpq-dev postgresql postgresql-contrib
+    Get build essentials
+
+    `sudo apt install build-essential libssl-dev libffi-dev python-dev libpq-dev postgresql postgresql-contrib`
     
-    sudo service postgresql start
+    Start DB - Use the following line to start DB everytime you restart Linux
     
-    sudo -i -u postgres
+    `sudo service postgresql start`
     
-    psql
+    Log in to postgres
     
-    CREATE DATABASE devdb;
+    `sudo -i -u postgres`
     
-    CREATE USER admin WITH PASSWORD 'adminpassword';
+    Start psql
     
-    ALTER ROLE admin SET client_encoding TO 'utf8';
+    `psql`
     
-    ALTER ROLE admin SET default_transaction_isolation TO 'read committed';
+    Create a new DB
     
-    ALTER ROLE admin SET timezone TO 'UTC';
+    `CREATE DATABASE devdb;`
     
-    GRANT ALL PRIVILEGES ON DATABASE devdb TO admin;
+    Create a new user for DB
+    
+    `CREATE USER admin WITH PASSWORD 'adminpassword';`
+    
+    Adjust user settings
+    
+    `ALTER ROLE admin SET client_encoding TO 'utf8';`
+    
+    `ALTER ROLE admin SET default_transaction_isolation TO 'read committed';`
+    
+    `ALTER ROLE admin SET timezone TO 'UTC';`
+    
+    Make your new user an admin of your new DB
+    
+    `GRANT ALL PRIVILEGES ON DATABASE devdb TO admin;`
     
     (you can make you own db name, username, and password, these will change in production builds for security, be sure to remember your info for creating superusers)
     
-    \q
+    Quit psql
     
-    exit
+    `\q`
+    
+    Exit postgres
+    
+    `exit`
     
 3. Create Python virtual environment
+
+    Navigate to GlobaltraQs Repo
     
-    cd GlobalTraQs
+    `cd GlobaltraQs`
     
-    sudo -H pip3 install -U pipenv
+    Install pipenv
     
-    pipenv install
+    `sudo pipenv install`
     
-    pipenv shell
+    Start virtual environment in GlobaltraQs repo
+    
+    `sudo pipenv shell`
     
 4. Install django and dependencies
 
-    /GlobaltraQs/
-
-    pipenv shell (if not activated from last step)
+    Make sure you are still in /GlobaltraQs/
     
-    pip3 install -r requirements.txt (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper installtion       for production, unless production has it installed on server already.)
+    Make sure the virtual environment is activated 
+
+    `sudo pipenv shell`
+    
+    Install project requirements
+    
+    `pip3 install -r requirements.txt` (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper                installation for production, unless production has it installed on server already.)
+    
+    Install missing dependencies
+    
+    `pip3 install psycopg2-binary python-decouple djangorestframework knox jinja2 boto3 djangorestframework-api-key django-rest-knox django-restql django-decouple Pillow`
     
 5. Update settings.ini
 
-    nano GlobaltraQs/GlobalTraqs/settings.ini
+    Edit settings.ini in GlobaltraQs/GlobalTraqs/
+    
+    `nano GlobaltraQs/GlobalTraqs/settings.ini`
     
     Can copy and paste from below or fill in your own.
     
@@ -173,17 +221,27 @@ developmental version: http://globaltraqsdev.com/
 
     (again these values will change for deployments)
     
+    ctrl + x, y, then enter to save
+    
 6. Migrate, Create a superuser, and Start backend
 
-    /GlobaltraQs/Globaltraqs/
-
-    python manage.py makemigrations
+    In /GlobaltraQs/Globaltraqs/
     
-    python manage.py migrate
+    Set up DJANGO migrations
 
-    python manage.py createsuperuser (follow prompts and be sure to use the values for the DB user u made in step 2)
+    `python3 manage.py makemigrations`
+    
+    Migrate DJANGO to DB
+    
+    `python3 manage.py migrate`
+    
+    Create a superuser to login to DJANGO backend
 
-    python manage.py runserver
+    `python3 manage.py createsuperuser` - Make it simple and obvious for local dev
+    
+    Start DJANGO backend
+
+    `python3 manage.py runserver`
     
 7. Generate API key for frontend
     
@@ -193,7 +251,7 @@ developmental version: http://globaltraqsdev.com/
     
     Copy the key (including the prefix) from the yellow pop up at the top of the page
     
-    Add the key to frontend .env file (check discord for .env file info)
+    Add the key to frontend .env file (ssh into arqive server and retrieve the correct env from /carterb/)
     
 8. Create user groups - This section is a WIP
 
@@ -209,40 +267,69 @@ developmental version: http://globaltraqsdev.com/
 
     Exit virtual environment or open a new terminal
     
-    cd ~
+    `cd ~`
     
-    sudo -i -u postgres
+    Login to postgres
     
-    psql
+    `sudo -i -u postgres`
     
-    \c devdb
+    Start psql
     
-    INSERT INTO pins_categorytype VALUES (1, Personal, '');
+    `psql`
     
-    INSERT INTO pins_categorytype VALUES (2, Historical, '');
+    Connect to DB you made
     
-    INSERT INTO pins_categorytype VALUES (3, Community, '');
+    `\c devdb`
     
-    \q
+    At categories using SQL
     
-    exit
+    `INSERT INTO pins_categorytype VALUES (1, 'Personal', '');`
+    
+    `INSERT INTO pins_categorytype VALUES (2, 'Historical', '');`
+    
+    `INSERT INTO pins_categorytype VALUES (3, 'Community', '');`
+    
+    Quit psql
+    
+    `\q`
+    
+    exit postgres
+    
+    `exit`
     
 10. Populate DB with pre-made stories (this is a potential fix for FE crashing, also possibly need to populate other tables in DB like users.user)
 
-    GlobaltraQs/GlobalTraqs
+    Make sure your in GlobaltraQs/GlobalTraqs
     
-    python3 manage.py shell
+    Enter DJANGO shell
     
-    exec(open('old_story_upload.py').read())
+    `python3 manage.py shell`
+    
+    Start python script to populate DB
+    
+    `exec(open('old_story_upload.py').read())`
     
 11. Start Frontend
 
     In a new terminal open the arQive-frontend dir
     
-    npm install
+    Download nodejs
     
-    npm start
+    `curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh`
     
+    `sudo bash nodesource_setup.sh`
+    
+    Install nodejs
+    
+    `sudo apt install nodejs`
+    
+    Install node modules
+    
+    `npm install`
+    
+    Start frontend
+    
+    `npm start`
     
     
 # old instructions
