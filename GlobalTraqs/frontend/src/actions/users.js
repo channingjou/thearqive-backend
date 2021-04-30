@@ -143,7 +143,7 @@ export const unFavoriteProfile = (id) => (dispatch) => {
   axios
     .delete(`api/upVoteStory/${id}/`)
     .then((res) => {
-      console.log(id);
+      //console.log(id);
       dispatch({
         type: UNFAVORITE_PROFILE_STORY,
         payload: id,

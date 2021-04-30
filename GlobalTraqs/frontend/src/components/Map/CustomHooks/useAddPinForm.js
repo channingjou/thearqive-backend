@@ -49,7 +49,7 @@ const useAddPinForm = (callback) => {
       is_anonymous_pin: is_anonymous_pin,
     };
 
-    console.log(submit);
+    //console.log(submit);
     console.log("is submit");
     dispatch(addPin(submit));
     callback();

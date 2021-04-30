@@ -27,7 +27,7 @@ export default function ManageUsers() {
     dispatch(getUsers());
   }, []);
   const onSubmit = e => {
-    console.log(" the user role is " + userRole);
+    //console.log(" the user role is " + userRole);
     e.preventDefault();
     let submit = {
       id: editUser.id
@@ -51,7 +51,7 @@ export default function ManageUsers() {
         is_administrator: false
       };
     }
-    console.log(submit);
+    //console.log(submit);
     dispatch(editUserRole(editUser.id, submit));
     setmodalState(!modalState);
   };
@@ -170,7 +170,7 @@ const EditUserRole = props => {
   const labelStyle = {
     marginRight: "10px"
   };
-  console.log(props.userRole);
+  //console.log(props.userRole);
   return (
     <>
       <Modal

@@ -87,7 +87,7 @@ export default function Support() {
               axios
                 .post("api/contactUs/support", info, config)
                 .then(response => {
-                  console.log(response);
+                  //console.log(response);
                 });
               alert(
                 "Transaction completed by " + details.payer.name.given_name

@@ -10,6 +10,8 @@ from django_filters import FilterSet, Filter
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework_api_key.permissions import HasAPIKey
+# from django.contrib.auth.models import User
+
 # Register API
 
 
@@ -64,9 +66,8 @@ class StandardResultsSetPagination(PageNumberPagination):
 
 
 class UsersViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-
     serializer_class = UserSerializer
+    queryset = User.objects.all()
     pagination_class = StandardResultsSetPagination
 
 
@@ -86,7 +87,7 @@ class UserViewProfileViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
 
     serializer_class = UserProfileSerializer
-    pagination_class = StandardResultsSetPagination
+   # pagination_class = StandardResultsSetPagination
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
     filterset_fields = ['username']
     search_fields = ['username']

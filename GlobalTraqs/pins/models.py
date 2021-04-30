@@ -85,9 +85,9 @@ class flagStory(models.Model):
         "pin", on_delete=models.CASCADE, null=True,  related_name='flaggerstory')
     flagger = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)
-    flagged = models.BooleanField(default=False)
+    flagged = models.BooleanField(default=True)
     reportType = models.PositiveIntegerField(
-        default=1, validators=[MinValueValidator(0), MaxValueValidator(4)])
+        default=4, validators=[MinValueValidator(0), MaxValueValidator(5)])
     reason = models.TextField(null=True)
 
     class Meta:

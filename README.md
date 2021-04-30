@@ -165,8 +165,6 @@ developmental version: http://globaltraqsdev.com/
     
     Install pipenv
     
-    `sudo -H pip3 install -U pipenv`
-    
     `sudo pipenv install`
     
     Start virtual environment in GlobaltraQs repo
