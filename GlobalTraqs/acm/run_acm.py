@@ -1,19 +1,31 @@
 import psycopg2
 from random import randrange
+import configparser
 import os
 
 CHECKED_FILE = "checked_ids.txt"
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+config_path = os.path.join(BASE_DIR, "settings.ini")
+
+config = configparser.ConfigParser()
+config.sections()
+config.read(config_path)
+dbHost = config['settings']['HOST']
+dbDatabase = config['settings']['NAME']
+dbUser = config['settings']['USER']
+dbPassword = config['settings']['PASSWORD']
 
 conn = None
 def get_posts(checked_ids):
     try:
         conn = psycopg2.connect(
-            host="localhost",
-            database="devdb",
-            user="admin",
-            password="adminpassword"
+            host=dbHost,
+            database=dbDatabase,
+            user=dbUser,
+            password=dbPassword,
         )
-
         id_cur = conn.cursor()
         id_cur.execute('SELECT id FROM pins_pin;')
         ids = [r[0] for r in id_cur.fetchall()]
@@ -63,10 +75,10 @@ def get_saved_posts():
 def mod_posts(posts):
     try:
         conn = psycopg2.connect(
-            host="localhost",
-            database="devdb",
-            user="admin",
-            password="adminpassword"
+            host=dbHost,
+            database=dbDatabase,
+            user=dbUser,
+            password=dbPassword,
         )
         cur = conn.cursor()
         for id in posts:

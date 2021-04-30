@@ -28,5 +28,5 @@ class RunAcmView(APIView):
         """Implementation like this means future efforts only need to change what script this API calls"""
         """I dont think this api has to return anything major, maybe just a boolean which triggers the"""
         """frontend to recall all the pins again to reflect the new flags"""
-        output = subprocess.check_output(['python', 'acm/run_acm.py'])
+        output = subprocess.check_output(['python3', 'acm/run_acm.py'])
         return Response({'completed' : True})
