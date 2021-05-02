@@ -81,7 +81,7 @@ developmental version: http://globaltraqsdev.com/
     
     `git clone https://github.com/balacarter/arQive-frontend.git`
 
-1. Install python3.7 and pip 3
+1. Install pip 3
 
     Navigate to home dir
 
@@ -93,9 +93,9 @@ developmental version: http://globaltraqsdev.com/
     
     Add third party repo for python 3.7
     
-    `sudo apt install software-properties-common`
+    `sudo apt-get update`
     
-    `sudo add-apt-repository ppa:deadsnakes/ppa`
+    `sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3`
     
     Install python3 from repo
     
