@@ -88,10 +88,6 @@ developmental version: http://globaltraqsdev.com/
     `cd ~`
 
     Get latest from server
-
-    `sudo apt update`
-    
-    Add third party repo for python 3.7
     
     `sudo apt-get update`
     
