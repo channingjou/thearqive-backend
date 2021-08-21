@@ -1,3 +1,5 @@
+#THIS BRANCH IS A WORKING OLD BACKUP. TO BE SURE YOU HAVE THE LATEST CHANGES CREATE A NEW DEVELOPMENT BRANCH OFF OF 'production' BRANCH
+
 1. [About](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#about)
 1. [Rules](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#rules)
 1. [Instructions](https://github.com/balacarter/GlobaltraQs/blob/master/README.md#globaltraqs) 
@@ -14,7 +16,7 @@ Still In Development
 # Rules 
 Contribution Rules
 
-✔️ Never work on master branch!
+✔️ Never work on master or production branch!
 
 ⚠️ Be sure to branch off the development branch for features WIP
 
@@ -71,6 +73,8 @@ developmental version: http://globaltraqsdev.com/
 
 # Setup guide
 
+This is only a guide and does not work for all systems. Try googling errors and changing versions. Production uses Ubuntu 18.0.4 and Python 3.6.9
+
 0. Update and Download repos
     
     `sudo apt-get update`
@@ -81,17 +85,21 @@ developmental version: http://globaltraqsdev.com/
     
     `git clone https://github.com/balacarter/arQive-frontend.git`
 
-1. Install pip 3
+1. Install python3.7 and pip 3
 
     Navigate to home dir
 
     `cd ~`
 
     Get latest from server
+
+    `sudo apt update`
     
-    `sudo apt-get update`
+    Add third party repo for python 3.7
     
-    `sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3`
+    `sudo apt install software-properties-common`
+    
+    `sudo add-apt-repository ppa:deadsnakes/ppa`
     
     Install python3 from repo
     
@@ -161,7 +169,7 @@ developmental version: http://globaltraqsdev.com/
     
     Install pipenv
     
-    `sudo pipenv install`
+    `sudo pipenv install
     
     Start virtual environment in GlobaltraQs repo
     
@@ -177,11 +185,11 @@ developmental version: http://globaltraqsdev.com/
     
     Install project requirements
     
-    `pip3 install -r requirements.txt` (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix, need to figure out proper                installation for production, unless production has it installed on server already.)
+    `pip3 install -r requirements.txt` (this command crashes on installing psycopg2 but also installs psycopg2-binary which is a working fix)
     
     Install missing dependencies
     
-    `pip3 install psycopg2-binary python-decouple djangorestframework knox jinja2 boto3 djangorestframework-api-key django-rest-knox django-restql django-decouple Pillow`
+    `pip3 install psycopg2-binary python-decouple djangorestframework jinja2 boto3 djangorestframework-api-key django-rest-knox django-restql django-decouple Pillow`
     
 5. Update settings.ini
 
@@ -293,7 +301,7 @@ developmental version: http://globaltraqsdev.com/
     
     `exit`
     
-10. Populate DB with pre-made stories (this is a potential fix for FE crashing, also possibly need to populate other tables in DB like users.user)
+10. Populate DB with pre-made stories
 
     Make sure your in GlobaltraQs/GlobalTraqs
     
