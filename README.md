@@ -81,9 +81,9 @@ This is only a guide and does not work for all systems. Try googling errors and 
     
     `sudo apt -y upgrade`
     
-    `git clone https://github.com/balacarter/GlobaltraQs.git`
+    `git clone https://github.com/kennardlim1220/GlobaltraQs.git`
     
-    `git clone https://github.com/balacarter/arQive-frontend.git`
+    `git clone https://github.com/kennardlim1220/arQive-frontend.git`
 
 1. Install python3.7 and pip 3
 
