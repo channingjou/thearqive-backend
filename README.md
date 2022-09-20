@@ -117,7 +117,7 @@ This is only a guide and does not work for all systems. Try googling errors and 
 
     Get build essentials
 
-    `sudo apt install build-essential libssl-dev libffi-dev python-dev libpq-dev postgresql postgresql-contrib`
+    `sudo apt install build-essential libssl-dev libffi-dev python-dev3.7 libpq-dev postgresql postgresql-contrib`
     
     Start DB - Use the following line to start DB everytime you restart Linux
     
