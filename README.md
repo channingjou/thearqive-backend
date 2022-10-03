@@ -228,6 +228,16 @@ This is only a guide and does not work for all systems. Try googling errors and 
     ctrl + x, y, then enter to save
     
 6. Migrate, Create a superuser, and Start backend
+    Note:this is a temporary commit from Kennard but if you are on the Ubuntu server, you must:
+    1. `nano /Globaltraqs/Globaltraqs/settings.py` (File inside 1 layer deeper than setting.ini)
+    2. add '*' to allowed host and save the file (ctrl x, y, enter)
+    3. shutdown the virtual machine
+    4. In Virtual Box, click settings -> Network and change NAT to Bridged Adapter
+    5. Turn on the virtual machine
+    6. use `ip addr` o get your virtual machine ip address. Look for inet to get your ip address.
+        - If you only have inet6 (ipv6), turn off the machine, change it back to NAT, turn it on, turn it off, change if back to bridge, and turn it on again.
+          If that doesn't, come to the meeting.
+        Ignore this if you are using the Ubuntu GUI
 
     In /GlobaltraQs/Globaltraqs/
     
@@ -246,6 +256,8 @@ This is only a guide and does not work for all systems. Try googling errors and 
     Start DJANGO backend
 
     `python3 manage.py runserver`
+    - If you are using Kennard optional instruction, then run `python3 manage.py runserver 0.0.0.0:8000` instead.
+    - To access, use the virtual machine ip address. My ip was 192.168.1.183, so I would use `http://192.168.1.183:8000` in your host machine browser.
     
 7. Generate API key for frontend
     
