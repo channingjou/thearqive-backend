@@ -335,7 +335,7 @@ INSTALLING UBUNTU SEVER 22.04:
 
 6. Migrate, Create a superuser, and Start backend
    Note:this is a temporary commit from Kennard but if you are on the Ubuntu server, you must:
-   1. `nano /Globaltraqs/Globaltraqs/settings.py` (File inside 1 layer deeper than setting.ini)
+   1. `nano ./Globaltraqs/Globaltraqs/settings.py` (File inside 1 layer deeper than setting.ini)
    2. add '*' to allowed host and save the file (ctrl x, y, enter)
    3. shutdown the virtual machine
    4. In Virtual Box, click settings -> Network and change NAT to Bridged Adapter
